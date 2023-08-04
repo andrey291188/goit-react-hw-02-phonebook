@@ -1,4 +1,5 @@
 import css from "./filterlist.module.css"
+import PropTypes from 'prop-types';
 
 const FilterList = ({value, onChange}) => {
   return (
@@ -10,3 +11,8 @@ const FilterList = ({value, onChange}) => {
 };
 
 export default FilterList
+
+FilterList.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+}

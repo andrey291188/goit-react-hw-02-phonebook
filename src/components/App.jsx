@@ -12,9 +12,9 @@ class App extends Component {
 
   addContact = ({ name: nameProps, number: numberProps }) => {
     const includsName = this.state.contacts.find(
-      ({ name }) => name === nameProps
+      ({ name, number }) => name.toLowerCase() === nameProps.toLowerCase() || number === numberProps
     );
-
+    
     if (includsName) {
       alert(`${includsName.name} is already in contacts`);
       return;
@@ -56,7 +56,6 @@ class App extends Component {
       <div>
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.addContact} />
-
         <h2>Contacts</h2>
         <FilterList value={this.state.filter} onChange={this.changeFilter} />
         <ContactList

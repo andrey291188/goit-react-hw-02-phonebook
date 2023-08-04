@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
+import PropTypes from 'prop-types';
 import css from './contactform.module.css';
 
 class ContactForm extends Component {
@@ -19,7 +20,7 @@ class ContactForm extends Component {
       name: yup.string().min(2).required(),
       number: yup.number().min(6).required(),
     })
-
+    
     return (
       <Formik initialValues={this.state} validationSchema={schema} onSubmit={this.handleSubmit}>
         <Form className={css.form_style}>
@@ -51,3 +52,7 @@ class ContactForm extends Component {
 }
 
 export default ContactForm;
+
+ContactForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+}
